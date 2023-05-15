@@ -30,15 +30,35 @@ namespace LoginRegistration
                 {
                     SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["UserDetails"].ConnectionString);
                     con.Open();
-                    string checkusername = "select UserName from Registration where UserName = @username;";
-                    SqlCommand cmd1 = new SqlCommand(checkusername,con);
-                    cmd1.Parameters.AddWithValue("@username", UserName.Text);
-                    string ans = cmd1.ExecuteScalar().ToString();
-                    if (ans != "")
+                    
+                    try
                     {
-                        Comment.Text = "Give a unique username";
+                        string checkusername = "select UserName from Registration where UserName = @username;";
+                        SqlCommand cmd1 = new SqlCommand(checkusername, con);
+                        cmd1.Parameters.AddWithValue("@username", UserName.Text);
+                        var ans = cmd1.ExecuteScalar();
+                        if (ans != null)
+                        {
+                            Comment.Text = "Give a unique username";
+
+                        }
+                        /*if (ans != "")
+                        {
+                            Comment.Text = "Give a unique username";
+                        }*/
+                        else
+                        {
+                            string insert = "insert into Registration (UserName, Password, Email) Values (@username, @password, @email); ";
+                            SqlCommand cmd = new SqlCommand(insert, con);
+                            cmd.Parameters.AddWithValue("@username", UserName.Text);
+                            cmd.Parameters.AddWithValue("@password", Password.Text);
+                            cmd.Parameters.AddWithValue("@email", Email.Text);
+                            cmd.ExecuteNonQuery();
+                            con.Close();
+                            Response.Redirect("Login");
+                        }
                     }
-                    else
+                    catch(NullReferenceException ex)
                     {
                         string insert = "insert into Registration (UserName, Password, Email, IsActive) Values (@username, @password, @email, 0); ";
                         SqlCommand cmd = new SqlCommand(insert, con);
@@ -48,7 +68,9 @@ namespace LoginRegistration
                         cmd.ExecuteNonQuery();
                         con.Close();
                         Response.Redirect("Login");
+
                     }
+                    
                 }
                 catch (Exception ex)
                 {

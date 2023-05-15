@@ -11,7 +11,7 @@ namespace LoginRegistration
 {
 
 
-    public partial class Home
+    public partial class Read
     {
 
         /// <summary>
@@ -24,30 +24,21 @@ namespace LoginRegistration
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// Comment control.
+        /// StudentDetails control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Comment;
+        protected global::System.Web.UI.WebControls.Repeater StudentDetails;
 
         /// <summary>
-        /// submit control.
+        /// GoBack control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button submit;
-
-        /// <summary>
-        /// Read control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Read;
+        protected global::System.Web.UI.WebControls.Button GoBack;
     }
 }

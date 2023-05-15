@@ -38,9 +38,11 @@
         </table>
         <br />
         <asp:Button ID="Sumbit" runat="server" OnClick="CheckLogin" Text="Login"/>
+        <a href="Registeration.aspx">New User</a>
     </form>
     <br />
     <br />
     <asp:Label runat="server" Text="" ForeColor="Red" ID="Error"></asp:Label>
+      
 </body>
 </html>

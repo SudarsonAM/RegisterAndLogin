@@ -32,7 +32,12 @@ namespace LoginRegistration
                 }
                 else
                 {
-                    Session["username"] = UserName.Text;
+                    
+                    string getId = "Select ID from Registration where UserName=@username;";
+                    SqlCommand cmd2= new SqlCommand(getId,con);
+                    cmd2.Parameters.AddWithValue("@username", UserName.Text);
+                    string idValue=cmd2.ExecuteScalar().ToString();
+                    Session["userId"] = idValue;
                     Response.Redirect("Home");
                 }
             }
@@ -40,6 +45,10 @@ namespace LoginRegistration
             {
                 Response.Write(ex.Message);
             }
+        }
+        public void Register(object sender, EventArgs e)
+        {
+            Response.Redirect("Registeration");
         }
     }
 }
