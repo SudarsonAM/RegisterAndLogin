@@ -18,8 +18,9 @@
 <body>
     <h1>Login using session Completed</h1>
     <form id="form1" runat="server">
-        <div>
-        </div>
+        <asp:Label runat="server" ID="Comment"></asp:Label>
+        <asp:Button runat="server" ID="submit" Text="Insert Content" OnClick="CreateText"/>
+        <asp:Button runat="server" ID="Read" Text="View All" OnClick="GoToRead"/>
     </form>
 </body>
 </html>
